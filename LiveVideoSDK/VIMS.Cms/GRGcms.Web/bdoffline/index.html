@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <title>百度地图离线API V2.1</title>
+  <link rel="stylesheet" type="text/css" href="offlinemap/css/map.css"/>
+	<style type="text/css">
+	body, html,#map_victel {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+  <script type="text/javascript" src="offlinemap/map_load.js"></script>
+  <link rel="stylesheet" type="text/css" href="offlinemap/css/map.css"/>
+  
+  <script type="text/javascript" src="offlinemap/tools/TextIconOverlay_min.js"></script>
+  <script type="text/javascript" src="offlinemap/tools/MarkerClusterer_min.js"></script>
+
+    <!--加载鼠标绘制工具-->
+    <script type="text/javascript" src="offlinemap/tools/DrawingManager_min.js"></script>
+    <link rel="stylesheet" type="text/css" href="offlinemap/tools/DrawingManager_min.css" />
+
+    <!--加载检索信息窗口-->
+    <script type="text/javascript" src="offlinemap/tools/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" type="text/css" href="offlinemap/tools/SearchInfoWindow_min.css" />
+
+  <script type="text/javascript" src="offlinemap/jquery.js"></script>
+  <script type="text/javascript" src="offlinemap/json3.js"></script>
+  <script type="text/javascript" src="offlinemap/modules/GeoUtils.js"></script>
+</head>
+<body>
+<div id="map_victel"></div>
+</body>
+</html>
+<script type="text/javascript">
+	
+	Array.prototype.del=function(n) {　//n表示第几项，从0开始算起。
+//prototype为对象原型，注意这里为对象增加自定义方法的方法。
+　if(n<0)　//如果n<0，则不进行任何操作。
+return this;
+　else
+return this.slice(0,n).concat(this.slice(n+1,this.length));
+/*
+　concat方法：返回一个新数组，这个新数组是由两个或更多数组组合而成的。
+　这里就是返回this.slice(0,n)/this.slice(n+1,this.length)
+ 组成的新数组，这中间，刚好少了第n项。
+　slice方法： 返回一个数组的一段，两个参数，分别指定开始和结束的位置。
+*/
+}
+	
+	var markers = [];
+	
+	var markerClusterer = null;
+	
+	var replayMarker = null;
+	
+	var polyline = null;
+	
+	// 百度地图API功能
+	var map;
+
+	var drawingManager;
+	
+	var infoWindow;
+
+	var styleOptions = {
+	    strokeColor: "red",    //边线颜色。
+	    fillColor: "orange",      //填充颜色。当参数为空时，圆形将没有填充效果。
+	    strokeWeight: 3,       //边线的宽度，以像素为单位。
+	    strokeOpacity: 0.8,	   //边线透明度，取值范围0 - 1。
+	    fillOpacity: 0.6,      //填充的透明度，取值范围0 - 1。
+	    strokeStyle: 'dashed' //边线的样式，solid或dashed。
+	}
+
+	var overlaycomplete = function (e) {
+	    var json = "";
+        // 检索对应区域内的marker
+	    for (var i = 0; i < markers.length; i++) {
+	        if (e.overlay.getBounds().containsPoint(markers[i].getPosition())) {
+	            json += (json.length > 0) ? ("," + markers[i].getTitle()) : markers[i].getTitle();
+	        }
+	    }
+
+        //有圈选结果,通知.NET处理
+	    if (json.length > 0) {
+	        gisObj.onDrawResult(json);
+	    }
+
+	    map.removeOverlay(e.overlay);
+	};
+	  
+	//百度地图API配置
+	var offmapcfg = {
+	  'home'				: 'offlinemap/', //API主目录
+	  'imgext'      : '.png',   //瓦片图的后缀 ------ 根据需要修改，一般是 .png .jpg
+	  'tiles_dir': 'http://localhost:55708/bdoffline/offlinemap/tiles',       //普通瓦片图的地址，为空默认在 offlineemap/tiles/ 目录
+	  'tiles_hybrid': '',       //卫星瓦片图的地址，为空默认在 offlineemap/tiles_hybrid/ 目录
+	  'tiles_self'  : ''        //自定义图层的地址，为空默认在 offlineemap/tiles_self/ 目录
+	};
+
+	//百度地图API功能
+	function loadJScript()
+	{
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "offlinemap/map.js";
+		document.body.appendChild(script);
+		//异步加载增加代码
+		window.BMap=window.BMap||{};
+		window.BMap.apiLoad=function(){delete window.BMap.apiLoad;if(typeof init=="function"){init()}}
+	}
+	
+	function init()
+	{
+		map = new BMap.Map("map_victel", {minZoom:4, maxZoom:18});
+		map.centerAndZoom(new BMap.Point(113.343606442737, 23.1639971698391), 18);
+	    //启用滚轮放大缩小
+		map.enableScrollWheelZoom();
+		
+		var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+		var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+		var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+		/*缩放控件type有四种类型:
+		BMAP_NAVIGATION_CONTROL_SMALL：仅包含平移和缩放按钮；BMAP_NAVIGATION_CONTROL_PAN:仅包含平移按钮；BMAP_NAVIGATION_CONTROL_ZOOM：仅包含缩放按钮*/
+		
+		map.addControl(top_left_control);
+		map.addControl(top_left_navigation);
+	    //map.addControl(top_right_navigation);
+
+	    //实例化鼠标绘制工具
+		drawingManager = new BMapLib.DrawingManager(map, {
+		    isOpen: false, //是否开启绘制模式
+		    enableDrawingTool: false, //是否显示工具栏
+		    drawingToolOptions: {
+		        anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
+		        offset: new BMap.Size(5, 5), //偏离值
+		    },
+		    circleOptions: styleOptions, //圆的样式
+		    polylineOptions: styleOptions, //线的样式
+		    polygonOptions: styleOptions, //多边形的样式
+		    rectangleOptions: styleOptions //矩形的样式
+		});
+	    //添加鼠标绘制工具监听事件，用于获取绘制结果
+		drawingManager.addEventListener('overlaycomplete', overlaycomplete);
+		
+		//最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+		markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+		markerClusterer.setMaxZoom(17);
+		
+		var opts = {
+	    width : 200,    // 信息窗口宽度
+	    height: 130,    // 信息窗口高度
+	    title : "",  // 信息窗口标题
+	    enableMessage : true    //设置允许信息窗发送短息
+		}
+		infoWindow = new BMap.InfoWindow("", opts);  // 创建信息窗口对
+	}  
+	window.onload = loadJScript;  //异步加载地图
+
+//鼠标绘制图形
+function draw(type) {
+	drawingManager.open();
+	drawingManager.setDrawingMode(type);
+}
+
+function drawclose()
+{
+    drawingManager.close();
+}
+
+function addMarker(staff,realInfor)
+{
+	var terminal = eval('(' + staff + ')');
+	var Url = "offlinemap//images//Radio_OnLine.png";
+	var sizew = 22;
+	var sizeh = 28;
+	if (terminal.Vehicle == "vehicle") {
+	    Url = "offlinemap//images//PoliceCar.png";
+		sizew = 43;
+		sizeh = 24;
+	}
+	else if (terminal.Vehicle == "stable") {
+	    Url = "offlinemap//images//stable.png";
+		sizew = 43;
+		sizeh = 24;
+	}
+
+	var myIcon = new BMap.Icon(Url, new BMap.Size(sizew, sizeh));
+	var marker = new BMap.Marker(
+        new BMap.Point(terminal.Lng, terminal.Lat),
+        {
+        	icon: myIcon,
+        	title : terminal.No
+        });  // 创建标注
+	map.addOverlay(marker); // 将标注添加到地图中
+
+	marker.addEventListener('click', function (e)
+	{
+		var content = "<font face=华文中宋 color=gray size=2>" + realInfor + "</font>";
+		infoWindow.setTitle(terminal.Staff);
+		infoWindow.setContent(content);
+	  map.openInfoWindow(infoWindow, e.point); //开启信息窗口
+	});
+	marker.addEventListener('rightclick', function (e)
+	{
+		if (typeof gisObj == "undefined")
+		{
+			alert("gisObj参数未初始化")
+			return;
+		}
+		else
+		{
+			gisObj.onMouseClick(terminal.No + "");
+		}
+	});
+
+	markers.push(marker);
+	
+	markerClusterer.addMarker(marker);
+}
+
+function updateMarker(staff,realInfor)
+{
+	var terminal = eval('(' + staff + ')');
+	for (var i = 0; i < markers.length; i++) {
+		if (markers[i].getTitle() == terminal.No)
+		{
+		    markers[i].setPosition(new BMap.Point(terminal.Lng, terminal.Lat));
+		    return;
+		}
+  }
+
+  addMarker(staff,realInfor);
+}
+
+function removeMarker(staff)
+{
+	var terminal = eval('(' + staff + ')');
+	for (var i = 0; i < markers.length; i++) {
+		if (markers[i].getTitle() == terminal.No)
+		{
+			map.removeOverlay(markers[i]);
+			markers.del(i);
+			return;
+		}
+  }
+}
+
+function clearMarker()
+{
+	map.clearOverlays();
+
+  markers.length = 0;
+  
+  markerClusterer.clearMarkers();
+  
+  polyline = null;
+  
+  replayMarker = null;
+}
+
+function setCenter(x,y)
+{
+    map.centerAndZoom(new BMap.Point(x, y), 18);
+}
+
+function addTrace(pts)
+{
+	var terminalList = eval(pts);
+	
+	var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
+    scale: 0.6,//图标缩放大小
+    strokeColor:'#f3f3f3',//设置矢量图标的线填充颜色
+    strokeWeight: '1',//设置线宽
+	});
+	var icons = new BMap.IconSequence(sy, '8', '16');
+	// 创建polyline对象
+	var pois = [];
+	for (var i = 0; i < terminalList.length; i++)
+	{
+		pois[i] = new BMap.Point(terminalList[i].X,terminalList[i].Y);
+	}
+
+	polyline = new BMap.Polyline(pois, {
+	   enableEditing: false,	//是否启用线编辑，默认为false
+	   enableClicking: true,	//是否响应点击事件，默认为true
+	   icons:[icons],
+	   strokeWeight:'6',			//折线的宽度，以像素为单位
+	   strokeOpacity: 0.8,		//折线的透明度，取值范围0 - 1
+	   strokeColor:"#18a45b", 	//折线颜色
+	   setStrokeStyle:"dashed"			//虚线或实线
+	});
+	
+	map.addOverlay(polyline);          //增加折线
+}
+
+function removeTrace()
+{
+	map.clearOverlays();
+	
+	polyline = null;
+
+  markers.length = 0;
+}
+
+function addPoint(staff)
+{
+	var point = eval('(' + staff + ')');
+	
+	if (replayMarker == null)
+	{
+		var myIcon = new BMap.Icon(
+    'offlinemap//images//Radio_Point.png',
+    new BMap.Size(22, 28)
+    );
+    
+    replayMarker = new BMap.Marker(
+      new BMap.Point(point.X, point.Y),
+      {
+      	icon: myIcon
+      });  // 创建标注
+      
+		map.addOverlay(replayMarker); // 将标注添加到地图中
+	}
+	
+	if (polyline == null)
+	{
+		var pts = [];
+		
+		pts.push(new BMap.Point(point.X, point.Y));
+		
+		polyline = new BMap.Polyline(pts, {
+			enableEditing		: false,	//是否启用线编辑，默认为false
+			enableClicking	: true,	//是否响应点击事件，默认为true
+			//icons					: [icons],
+			strokeWeight		: '2',			//折线的宽度，以像素为单位
+			strokeOpacity		: 0.8,		//折线的透明度，取值范围0 - 1
+			strokeColor			: "#ff7800", 	//折线颜色
+			setStrokeStyle	: "dashed"			//虚线或实线
+			});
+		map.addOverlay(polyline);          //增加轨迹线
+	}
+	else
+	{
+		//当前轨迹线的点集合
+		var pts = polyline.getPath();
+		
+		//加入最后一个
+		pts.push(new BMap.Point(point.X, point.Y));
+		
+		//重新加入
+		polyline.setPath(pts);
+	}
+	
+	replayMarker.setPosition(new BMap.Point(point.X, point.Y));
+}
+
+function inview(pts)
+{
+	var point = eval('(' + pts + ')');
+	
+	return map.getBounds().containsPoint(new BMap.Point(point.X, point.Y));
+}
+
+function setHeatMap()
+{
+       var heatmapData={
+                max: 120,
+                data: [
+                    {longitude:113.337039508957,latitude:23.1583334532047,count:100,radius:0.001},
+                    {longitude:113.327019622378,latitude:23.1683182227031,count:19,radius:0.001}
+                ]
+            };
+      var config = {  //热力图的配置项
+          radius: 'radius',       //设置每一个热力点的半径
+          maxOpacity: 0.9,        //设置最大的不透明度
+          // minOpacity: 0.3,     //设置最小的不透明度
+          scaleRadius: true,      //设置热力点是否平滑过渡
+          blur: 0.95,             //系数越高，渐变越平滑，默认是0.85,
+                                  //滤镜系数将应用于所有热点数据。
+          useLocalExtrema: true,  //使用局部极值
+          latField: 'latitude',   //维度
+          lngField: 'longitude',  //经度
+          valueField: 'count',    //热力点的值
+          gradient: {   "0.99": "rgba(255,0,0,1)",
+                  "0.9": "rgba(255,255,0,1)",
+                  "0.8": "rgba(0,255,0,1)",
+                  "0.5": "rgba(0,255,255,1)",
+                  "0": "rgba(0,0,255,1)"
+              },
+          //过渡，颜色过渡和过渡比例,范例：
+          /*
+              {   "0.99": "rgba(255,0,0,1)",
+                  "0.9": "rgba(255,255,0,1)",
+                  "0.8": "rgba(0,255,0,1)",
+                  "0.5": "rgba(0,255,255,1)",
+                  "0": "rgba(0,0,255,1)"
+              }
+          */
+          // backgroundColor: 'rgba(27,34,44,0.5)'    //热力图Canvas背景
+      };
+      var heatmapLayer = new HeatmapOverlay(config);  //重新创建热力图对象
+      //$(".leaflet-overlay-pane").empty();         //清空热力图的空间
+      map.addLayer(heatmapLayer);                 //将热力图图层添加在地图map对象上
+      heatmapLayer.setData(heatmapData);          //设置热力图的的数据
+  }
+</script>

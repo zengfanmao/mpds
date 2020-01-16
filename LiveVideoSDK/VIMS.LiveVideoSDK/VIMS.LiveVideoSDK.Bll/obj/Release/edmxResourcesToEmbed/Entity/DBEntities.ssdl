@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="mpds_audio_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="conference_uuid" Type="varchar" MaxLength="64" />
+    <Property Name="conference_name" Type="varchar" MaxLength="64" />
+    <Property Name="event_name" Type="varchar" MaxLength="64" />
+    <Property Name="event_time" Type="datetime" Precision="0" />
+    <Property Name="startor" Type="varchar" MaxLength="64" />
+    <Property Name="listener" Type="varchar" MaxLength="64" />
+    <Property Name="content" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="mpds_group_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupName" Type="varchar" MaxLength="64" />
+    <Property Name="groupid" Type="varchar" MaxLength="10" />
+    <Property Name="type" Type="char" MaxLength="3" />
+    <Property Name="account" Type="varchar" MaxLength="10" />
+    <Property Name="name" Type="varchar" MaxLength="32" />
+    <Property Name="dept" Type="varchar" MaxLength="64" />
+    <Property Name="deptid" Type="varchar" MaxLength="64" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+    <Property Name="updatetime" Type="datetime" Precision="0" />
+    <Property Name="isdefault" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="mpds_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="account" Type="varchar" MaxLength="10" />
+    <Property Name="name" Type="varchar" MaxLength="32" />
+    <Property Name="eventName" Type="varchar" MaxLength="32" />
+    <Property Name="remark" Type="varchar" MaxLength="512" />
+    <Property Name="status" Type="char" MaxLength="1" />
+    <Property Name="type" Type="varchar" MaxLength="10" />
+    <Property Name="user_ip" Type="varchar" MaxLength="16" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="mpds_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parent_id" Type="bigint" />
+    <Property Name="nav_type" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="title" Type="varchar" MaxLength="100" />
+    <Property Name="sub_title" Type="varchar" MaxLength="100" />
+    <Property Name="icon_url" Type="varchar" MaxLength="255" />
+    <Property Name="link_url" Type="varchar" MaxLength="255" />
+    <Property Name="sort_id" Type="int" />
+    <Property Name="is_lock" Type="tinyint" />
+    <Property Name="remark" Type="text" />
+    <Property Name="action_type" Type="text" />
+    <Property Name="is_sys" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="mpds_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="100" />
+    <Property Name="role_type" Type="tinyint" />
+    <Property Name="is_sys" Type="tinyint" />
+    <Property Name="memo" Type="varchar" MaxLength="120" />
+    <Property Name="role_level" Type="int" />
+  </EntityType>
+  <EntityType Name="mpds_role_value">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_id" Type="bigint" />
+    <Property Name="nav_name" Type="varchar" MaxLength="100" />
+    <Property Name="action_type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbApiTokens">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="uCode" Type="varchar" MaxLength="36" />
+    <Property Name="apiToken" Type="varchar" MaxLength="36" />
+    <Property Name="createdTime" Type="timestamp" Precision="0" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+  </EntityType>
+  <EntityType Name="tbAppLogs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="createdTime" Type="timestamp" Precision="0" />
+    <Property Name="fCode" Type="varchar" MaxLength="30" />
+    <Property Name="appVersionCode" Type="varchar" MaxLength="30" />
+    <Property Name="appApiUrl" Type="varchar" MaxLength="350" />
+    <Property Name="appType" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="tbAppVersions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isDel" Type="int" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="appType" Type="varchar" MaxLength="30" />
+    <Property Name="appVersionNo" Type="int" />
+    <Property Name="appVersionName" Type="varchar" MaxLength="80" />
+    <Property Name="appPublishTime" Type="timestamp" Precision="0" />
+    <Property Name="appFeatures" Type="longtext" />
+    <Property Name="appTitle" Type="varchar" MaxLength="200" />
+    <Property Name="appDownloadUrl" Type="varchar" MaxLength="360" />
+    <Property Name="createuser" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="tbCaseCollection">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="caseCode" Type="varchar" MaxLength="36" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="createdTime" Type="timestamp" Precision="0" />
+    <Property Name="messageId" Type="varchar" MaxLength="36" />
+    <Property Name="remark" Type="varchar" MaxLength="200" />
+    <Property Name="uCode" Type="varchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="tbCaseDeployDevs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="csCode" Type="char" MaxLength="24" />
+    <Property Name="devCode" Type="char" MaxLength="12" />
+    <Property Name="uCode" Type="char" MaxLength="12" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbCaseDeploys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="csCode" Type="char" MaxLength="24" />
+    <Property Name="uCode" Type="char" MaxLength="24" />
+    <Property Name="rName" Type="char" MaxLength="10" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbCaseGoings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="csCode" Type="varchar" MaxLength="36" />
+    <Property Name="cgType" Type="varchar" MaxLength="20" />
+    <Property Name="cgAbstract" Type="varchar" MaxLength="64" />
+    <Property Name="uCode" Type="varchar" MaxLength="36" />
+    <Property Name="cgCreateTime" Type="timestamp" Precision="0" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="PositionRemark" Type="varchar" MaxLength="200" />
+    <Property Name="PositionLongitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="PositionLatitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="PositionName" Type="varchar" MaxLength="100" />
+    <Property Name="uUnitCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbCaseGps">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="csCode" Type="char" MaxLength="24" />
+    <Property Name="gpsTargetType" Type="char" MaxLength="10" />
+    <Property Name="devCode" Type="varchar" MaxLength="36" />
+    <Property Name="uCode" Type="char" MaxLength="20" />
+    <Property Name="gpsLongitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="gpsLatitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="gpsTime" Type="timestamp" Precision="0" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="altitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="speed" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationX" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationY" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationZ" Type="decimal" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="tbCaseLivingShows">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="caseCode" Type="varchar" MaxLength="36" />
+    <Property Name="rtmpUrl" Type="varchar" MaxLength="200" />
+    <Property Name="userCode" Type="varchar" MaxLength="36" />
+    <Property Name="livingState" Type="bool" />
+    <Property Name="startTime" Type="timestamp" Precision="0" />
+    <Property Name="endTime" Type="timestamp" Precision="0" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="sourceType" Type="varchar" MaxLength="20" />
+    <Property Name="deviceCode" Type="varchar" MaxLength="20" />
+    <Property Name="Cumulative" Type="int" />
+    <Property Name="fFirstFrame" Type="varchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="tbCaseMessages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="csCode" Type="varchar" MaxLength="36" />
+    <Property Name="msgType" Type="varchar" MaxLength="16" />
+    <Property Name="msgAbstract" Type="longtext" />
+    <Property Name="msgFile" Type="varchar" MaxLength="36" />
+    <Property Name="uCode" Type="varchar" MaxLength="36" />
+    <Property Name="msgTime" Type="datetime" Precision="0" />
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="uLatitude" Type="varchar" MaxLength="12" />
+    <Property Name="uLongitude" Type="varchar" MaxLength="12" />
+    <Property Name="uPositionName" Type="varchar" MaxLength="80" />
+    <Property Name="msgFromType" Type="varchar" MaxLength="50" />
+    <Property Name="msgToCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbCaseMission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="caseCode" Type="varchar" MaxLength="36" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="createdTime" Type="timestamp" Precision="0" />
+    <Property Name="missionStatus" Type="int" />
+    <Property Name="missionLimiTime" Type="int" />
+    <Property Name="toPositionName" Type="varchar" MaxLength="100" />
+    <Property Name="toPositionLatitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="toPositionLongitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="missionRemark" Type="varchar" MaxLength="500" />
+    <Property Name="routeDistance" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="createdUserCode" Type="varchar" MaxLength="36" />
+    <Property Name="createdPositionName" Type="varchar" MaxLength="100" />
+    <Property Name="createdPositionLatitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="createdPositionLongitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="missionType" Type="varchar" MaxLength="50" />
+    <Property Name="finishTime" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbCaseMissionDistribution">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="caseCode" Type="varchar" MaxLength="36" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="createdTime" Type="timestamp" Precision="0" />
+    <Property Name="missionId" Type="varchar" MaxLength="36" />
+    <Property Name="missionPersonStatus" Type="int" />
+    <Property Name="persionFinishTime" Type="timestamp" Precision="0" />
+    <Property Name="finishPositionName" Type="varchar" MaxLength="100" />
+    <Property Name="finishPositionLatitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="finishPositionLongitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="userCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbCases">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="csCode" Type="char" MaxLength="24" />
+    <Property Name="csName" Type="varchar" MaxLength="120" />
+    <Property Name="csType" Type="varchar" MaxLength="90" />
+    <Property Name="csAddress" Type="char" MaxLength="40" />
+    <Property Name="csTime" Type="timestamp" Precision="0" />
+    <Property Name="csTime_h" Type="timestamp" Precision="0" />
+    <Property Name="csStatus" Type="char" MaxLength="8" />
+    <Property Name="csDesc" Type="varchar" MaxLength="1000" />
+    <Property Name="csEndFlag" Type="char" MaxLength="3" />
+    <Property Name="csEndTime" Type="timestamp" Precision="0" />
+    <Property Name="csAccept" Type="char" MaxLength="16" />
+    <Property Name="csContact" Type="varchar" MaxLength="30" />
+    <Property Name="csTel" Type="varchar" MaxLength="20" />
+    <Property Name="csPlan" Type="longtext" />
+    <Property Name="uCode" Type="char" MaxLength="12" />
+    <Property Name="csCreateTime" Type="timestamp" Precision="0" />
+    <Property Name="csRptName" Type="varchar" MaxLength="30" />
+    <Property Name="csRptSex" Type="int" />
+    <Property Name="csRptAge" Type="int" />
+    <Property Name="csRptWorkUnit" Type="varchar" MaxLength="40" />
+    <Property Name="csRptLiveAddr" Type="varchar" MaxLength="40" />
+    <Property Name="csRptTel" Type="char" MaxLength="20" />
+    <Property Name="csRptTime" Type="timestamp" Precision="0" />
+    <Property Name="csRecept" Type="varchar" MaxLength="30" />
+    <Property Name="csRptType" Type="char" MaxLength="5" />
+    <Property Name="csReceptTime" Type="timestamp" Precision="0" />
+    <Property Name="csHowDiscover" Type="char" MaxLength="5" />
+    <Property Name="csDiscoverTime" Type="timestamp" Precision="0" />
+    <Property Name="csArea" Type="char" MaxLength="8" />
+    <Property Name="csSceneType" Type="char" MaxLength="3" />
+    <Property Name="csHurtLevel" Type="char" MaxLength="5" />
+    <Property Name="csRegDate" Type="date" />
+    <Property Name="csRegInst" Type="char" MaxLength="16" />
+    <Property Name="csFlag" Type="char" MaxLength="5" />
+    <Property Name="csEmail" Type="varchar" MaxLength="40" />
+    <Property Name="csReregReason" Type="char" MaxLength="4" />
+    <Property Name="csSuspCount" Type="int" />
+    <Property Name="csHurtCount" Type="int" />
+    <Property Name="csDeadCount" Type="int" />
+    <Property Name="csLoseVal" Type="bigint" />
+    <Property Name="csChoseOpp" Type="varchar" MaxLength="40" />
+    <Property Name="csChoseLoc" Type="varchar" MaxLength="36" />
+    <Property Name="csChoseObj" Type="varchar" MaxLength="32" />
+    <Property Name="csChoseArt" Type="varchar" MaxLength="68" />
+    <Property Name="csCrimeTrick" Type="varchar" MaxLength="72" />
+    <Property Name="csCrimePat" Type="varchar" MaxLength="56" />
+    <Property Name="csCrimeTool" Type="varchar" MaxLength="68" />
+    <Property Name="csEndDept" Type="char" MaxLength="16" />
+    <Property Name="csEndWay" Type="varchar" MaxLength="21" />
+    <Property Name="csEndType" Type="char" MaxLength="4" />
+    <Property Name="csCaptureVal" Type="bigint" />
+    <Property Name="csCaptCount" Type="smallint" />
+    <Property Name="csGrpCount" Type="smallint" />
+    <Property Name="csGrpKind" Type="char" MaxLength="3" />
+    <Property Name="csGrpInvCount" Type="smallint" />
+    <Property Name="csEndDesc" Type="longtext" />
+    <Property Name="csRescueType" Type="char" MaxLength="5" />
+    <Property Name="csRescueCount" Type="smallint" />
+    <Property Name="csEndChainCount" Type="smallint" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="csLatitude" Type="double" />
+    <Property Name="csLongitude" Type="double" />
+    <Property Name="csUpdateTime" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbDepartments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="int" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="dCode" Type="varchar" MaxLength="32" />
+    <Property Name="dName" Type="varchar" MaxLength="64" />
+    <Property Name="dAbbr" Type="varchar" MaxLength="32" />
+    <Property Name="dFather" Type="varchar" MaxLength="32" />
+    <Property Name="dDesc" Type="varchar" MaxLength="64" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sort_id" Type="int" />
+    <Property Name="createtime" Type="datetime" Precision="0" />
+    <Property Name="updatetime" Type="datetime" Precision="0" />
+    <Property Name="farther" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="tbDeviceIMDatas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="LastModifyTime" Type="timestamp" Precision="0" />
+    <Property Name="devSn" Type="varchar" MaxLength="16" />
+    <Property Name="csCode" Type="varchar" MaxLength="24" />
+    <Property Name="latitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="longitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="positionName" Type="varchar" MaxLength="260" />
+    <Property Name="altitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="speed" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationX" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationY" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationZ" Type="decimal" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="tbDevices">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="devCode" Type="char" MaxLength="12" />
+    <Property Name="devName" Type="char" MaxLength="16" />
+    <Property Name="devType" Type="char" MaxLength="10" />
+    <Property Name="devBrand" Type="char" MaxLength="10" />
+    <Property Name="devModel" Type="char" MaxLength="16" />
+    <Property Name="devPDate" Type="date" />
+    <Property Name="devGPeriod" Type="int" />
+    <Property Name="devSTime" Type="date" />
+    <Property Name="uCode" Type="char" MaxLength="12" />
+    <Property Name="devStatus" Type="char" MaxLength="8" />
+    <Property Name="devPhoto" Type="char" MaxLength="14" />
+    <Property Name="devRemark" Type="varchar" MaxLength="64" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="devSN" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbDiscussionGroupMenbers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="createdTime" Type="timestamp" Precision="0" />
+    <Property Name="discussionCode" Type="varchar" MaxLength="10" />
+    <Property Name="createdUserCode" Type="varchar" MaxLength="10" />
+    <Property Name="createdUserName" Type="varchar" MaxLength="32" />
+    <Property Name="uCode" Type="varchar" MaxLength="10" />
+    <Property Name="csCode" Type="varchar" MaxLength="24" />
+  </EntityType>
+  <EntityType Name="tbDiscussionGroups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isDel" Type="int" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="createdTime" Type="timestamp" Precision="0" />
+    <Property Name="discussionCode" Type="varchar" MaxLength="10" />
+    <Property Name="discussionName" Type="varchar" MaxLength="64" />
+    <Property Name="createdUserCode" Type="varchar" MaxLength="10" />
+    <Property Name="createdUserName" Type="varchar" MaxLength="32" />
+    <Property Name="csCode" Type="varchar" MaxLength="24" />
+    <Property Name="type" Type="char" MaxLength="3" />
+    <Property Name="relativegroup" Type="varchar" MaxLength="64" />
+    <Property Name="relativegroupid" Type="varchar" MaxLength="10" />
+    <Property Name="dept" Type="varchar" MaxLength="64" />
+    <Property Name="deptid" Type="varchar" MaxLength="64" />
+    <Property Name="status" Type="int" />
+    <Property Name="updatetime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbFileDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="attRsCode" Type="char" MaxLength="12" />
+    <Property Name="fCode" Type="char" MaxLength="14" />
+    <Property Name="fName" Type="varchar" MaxLength="120" />
+    <Property Name="fSize" Type="bigint" />
+    <Property Name="fAbstract" Type="varchar" MaxLength="128" />
+    <Property Name="fFirstFrame" Type="char" MaxLength="14" />
+    <Property Name="fStartTime" Type="timestamp" Precision="0" />
+    <Property Name="fEndTime" Type="timestamp" Precision="0" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="fRelativePath" Type="varchar" MaxLength="300" />
+    <Property Name="fduration" Type="varchar" MaxLength="36" />
+    <Property Name="virtualId" Type="varchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="tbRoles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="rName" Type="char" MaxLength="10" />
+    <Property Name="rDesc" Type="char" MaxLength="40" />
+    <Property Name="uCode" Type="char" MaxLength="12" />
+    <Property Name="rEditTime" Type="timestamp" Precision="0" />
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbUnits">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="unitCode" Type="varchar" MaxLength="50" />
+    <Property Name="maxUserNumber" Type="int" />
+    <Property Name="maxVideoUserNumber" Type="int" />
+    <Property Name="unitName" Type="varchar" MaxLength="50" />
+    <Property Name="unitLoginName" Type="varchar" MaxLength="50" />
+    <Property Name="uHeadPortrait" Type="varchar" MaxLength="50" />
+    <Property Name="PIC" Type="varchar" MaxLength="50" />
+    <Property Name="Duty" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="50" />
+    <Property Name="Province" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="County" Type="varchar" MaxLength="50" />
+    <Property Name="detailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbUserIMDatas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isDel" Type="bool" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="LastModifyTime" Type="timestamp" Precision="0" />
+    <Property Name="uCode" Type="varchar" MaxLength="10" />
+    <Property Name="csCode" Type="varchar" MaxLength="24" />
+    <Property Name="latitude" Type="double" />
+    <Property Name="longitude" Type="double" />
+    <Property Name="positionName" Type="varchar" MaxLength="260" />
+    <Property Name="altitude" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="speed" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationX" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationY" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="accelerationZ" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="type" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="tbUsers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isDel" Type="int" />
+    <Property Name="recSN" Type="blob" />
+    <Property Name="uCode" Type="varchar" MaxLength="10" />
+    <Property Name="uPassword" Type="varchar" MaxLength="64" />
+    <Property Name="uSalt" Type="varchar" MaxLength="16" />
+    <Property Name="uBelong" Type="char" MaxLength="10" />
+    <Property Name="uIsActive" Type="int" />
+    <Property Name="rName" Type="char" MaxLength="10" />
+    <Property Name="pcNum" Type="varchar" MaxLength="10" />
+    <Property Name="uName" Type="varchar" MaxLength="32" />
+    <Property Name="uSex" Type="varchar" MaxLength="4" />
+    <Property Name="uDuty" Type="varchar" MaxLength="32" />
+    <Property Name="dCode" Type="varchar" MaxLength="32" />
+    <Property Name="uTel" Type="varchar" MaxLength="16" />
+    <Property Name="uShortNum" Type="char" MaxLength="8" />
+    <Property Name="uHeadPortrait" Type="varchar" MaxLength="300" />
+    <Property Name="dName" Type="varchar" MaxLength="64" />
+    <Property Name="LYCID" Type="varchar" MaxLength="50" />
+    <Property Name="loginFailTimes" Type="smallint" />
+    <Property Name="lastLoginTime" Type="datetime" Precision="0" />
+    <Property Name="uRemarks" Type="longtext" />
+    <Property Name="Createtime" Type="datetime" Precision="0" />
+    <Property Name="uDepartment" Type="varchar" MaxLength="32" />
+    <Property Name="accountType" Type="varchar" MaxLength="32" />
+    <Property Name="uEmployeenum" Type="varchar" MaxLength="50" />
+    <Property Name="uIshistory" Type="bool" />
+    <Property Name="uIsUnilt" Type="int" />
+    <Property Name="uIsAccontion" Type="bool" />
+    <Property Name="uUnitCode" Type="varchar" MaxLength="32" />
+    <Property Name="roleid" Type="bigint" Nullable="false" />
+    <Property Name="roleType" Type="int" Nullable="false" />
+    <Property Name="groupid" Type="varchar" MaxLength="10" />
+    <Property Name="groupName" Type="varchar" MaxLength="64" />
+    <Property Name="deviceid" Type="int" />
+    <Property Name="deviceESN" Type="varchar" MaxLength="32" />
+    <Property Name="devicetype" Type="char" MaxLength="3" />
+    <Property Name="status" Type="varchar" MaxLength="4" />
+    <Property Name="purpose" Type="varchar" MaxLength="4" />
+  </EntityType>
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="mpds_audio_detail" EntityType="Self.mpds_audio_detail" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="mpds_group_user" EntityType="Self.mpds_group_user" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="mpds_log" EntityType="Self.mpds_log" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="mpds_menu" EntityType="Self.mpds_menu" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="mpds_role" EntityType="Self.mpds_role" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="mpds_role_value" EntityType="Self.mpds_role_value" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbApiTokens" EntityType="Self.tbApiTokens" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbAppLogs" EntityType="Self.tbAppLogs" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbAppVersions" EntityType="Self.tbAppVersions" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseCollection" EntityType="Self.tbCaseCollection" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseDeployDevs" EntityType="Self.tbCaseDeployDevs" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseDeploys" EntityType="Self.tbCaseDeploys" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseGoings" EntityType="Self.tbCaseGoings" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseGps" EntityType="Self.tbCaseGps" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseLivingShows" EntityType="Self.tbCaseLivingShows" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseMessages" EntityType="Self.tbCaseMessages" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseMission" EntityType="Self.tbCaseMission" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCaseMissionDistribution" EntityType="Self.tbCaseMissionDistribution" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbCases" EntityType="Self.tbCases" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbDepartments" EntityType="Self.tbDepartments" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbDeviceIMDatas" EntityType="Self.tbDeviceIMDatas" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbDevices" EntityType="Self.tbDevices" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbDiscussionGroupMenbers" EntityType="Self.tbDiscussionGroupMenbers" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbDiscussionGroups" EntityType="Self.tbDiscussionGroups" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbFileDetails" EntityType="Self.tbFileDetails" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbRoles" EntityType="Self.tbRoles" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbUnits" EntityType="Self.tbUnits" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbUserIMDatas" EntityType="Self.tbUserIMDatas" Schema="mpds_upper" store:Type="Tables" />
+    <EntitySet Name="tbUsers" EntityType="Self.tbUsers" Schema="mpds_upper" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,10 @@
+
+mysql文件下是mysql数据库的，当前是mysql数据库
+
+
+--这是sql数据库的
+dbcreate.sql 是数据库表
+init_fun.sql 数据初始化过程
+init_data.sql 数据初始化
+
+依次执行即可

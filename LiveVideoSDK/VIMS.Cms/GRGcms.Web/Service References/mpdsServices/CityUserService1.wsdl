@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://nm.pdt.org.cn" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CityUserService" targetNamespace="http://nm.pdt.org.cn" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://nm.pdt.org.cn" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="delRoamInRadioUser" type="tns:delRoamInRadioUser" />
+      <xs:element name="delRoamInRadioUserResponse" type="tns:delRoamInRadioUserResponse" />
+      <xs:element name="delRoamInTalkGroup" type="tns:delRoamInTalkGroup" />
+      <xs:element name="delRoamInTalkGroupResponse" type="tns:delRoamInTalkGroupResponse" />
+      <xs:element name="groupInfoQuery" type="tns:groupInfoQuery" />
+      <xs:element name="groupInfoQueryResponse" type="tns:groupInfoQueryResponse" />
+      <xs:element name="isAlive" type="tns:isAlive" />
+      <xs:element name="isAliveResponse" type="tns:isAliveResponse" />
+      <xs:element name="orgInfoQuery" type="tns:orgInfoQuery" />
+      <xs:element name="orgInfoQueryResponse" type="tns:orgInfoQueryResponse" />
+      <xs:element name="roamToQuery" type="tns:roamToQuery" />
+      <xs:element name="roamToQueryResponse" type="tns:roamToQueryResponse" />
+      <xs:element name="roamUserQuery" type="tns:roamUserQuery" />
+      <xs:element name="roamUserQueryResponse" type="tns:roamUserQueryResponse" />
+      <xs:element name="setRadioUserRoamAttr" type="tns:setRadioUserRoamAttr" />
+      <xs:element name="setRadioUserRoamAttrResponse" type="tns:setRadioUserRoamAttrResponse" />
+      <xs:element name="setRadioUserRoamToList" type="tns:setRadioUserRoamToList" />
+      <xs:element name="setRadioUserRoamToListResponse" type="tns:setRadioUserRoamToListResponse" />
+      <xs:element name="setRadioUserRoamToTscList" type="tns:setRadioUserRoamToTscList" />
+      <xs:element name="setRadioUserRoamToTscListResponse" type="tns:setRadioUserRoamToTscListResponse" />
+      <xs:element name="switchStateQuery" type="tns:switchStateQuery" />
+      <xs:element name="switchStateQueryResponse" type="tns:switchStateQueryResponse" />
+      <xs:element name="termDevInfoQuery" type="tns:termDevInfoQuery" />
+      <xs:element name="termDevInfoQueryResponse" type="tns:termDevInfoQueryResponse" />
+      <xs:element name="termUseInfoQuery" type="tns:termUseInfoQuery" />
+      <xs:element name="termUseInfoQueryResponse" type="tns:termUseInfoQueryResponse" />
+      <xs:element name="userESNSync" type="tns:userESNSync" />
+      <xs:element name="userESNSyncResponse" type="tns:userESNSyncResponse" />
+      <xs:element name="userInfoQuery" type="tns:userInfoQuery" />
+      <xs:element name="userInfoQueryResponse" type="tns:userInfoQueryResponse" />
+      <xs:complexType name="userESNSync">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="esnList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userESNSyncResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="resultIsOK" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setRadioUserRoamAttr">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setRadioUserRoamAttrResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="resultIsOK" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="orgInfoQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="orgInfoQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="orgList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userInfoQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userInfoQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="userList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="termUseInfoQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="termUseInfoQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="devList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="switchStateQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="switchStateQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="onOffList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setRadioUserRoamToList">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setRadioUserRoamToListResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="resultIsOK" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="delRoamInTalkGroup">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="delRoamInTalkGroupResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="resultIsOK" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setRadioUserRoamToTscList">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setRadioUserRoamToTscListResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="resultIsOK" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="groupInfoQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="groupInfoQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="groupList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="termDevInfoQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="termDevInfoQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="devList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="isAlive">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="isAliveResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="resultIsAlive" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="delRoamInRadioUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="delRoamInRadioUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="resultIsOK" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="roamUserQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="roamUserQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="roamUserList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="roamToQuery">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="roamToQueryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="regionList" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="userInfoQuery">
+    <wsdl:part name="parameters" element="tns:userInfoQuery" />
+  </wsdl:message>
+  <wsdl:message name="delRoamInTalkGroupResponse">
+    <wsdl:part name="parameters" element="tns:delRoamInTalkGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="userESNSyncResponse">
+    <wsdl:part name="parameters" element="tns:userESNSyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="delRoamInRadioUser">
+    <wsdl:part name="parameters" element="tns:delRoamInRadioUser" />
+  </wsdl:message>
+  <wsdl:message name="switchStateQuery">
+    <wsdl:part name="parameters" element="tns:switchStateQuery" />
+  </wsdl:message>
+  <wsdl:message name="switchStateQueryResponse">
+    <wsdl:part name="parameters" element="tns:switchStateQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="delRoamInTalkGroup">
+    <wsdl:part name="parameters" element="tns:delRoamInTalkGroup" />
+  </wsdl:message>
+  <wsdl:message name="isAlive">
+    <wsdl:part name="parameters" element="tns:isAlive" />
+  </wsdl:message>
+  <wsdl:message name="orgInfoQueryResponse">
+    <wsdl:part name="parameters" element="tns:orgInfoQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="roamToQuery">
+    <wsdl:part name="parameters" element="tns:roamToQuery" />
+  </wsdl:message>
+  <wsdl:message name="groupInfoQuery">
+    <wsdl:part name="parameters" element="tns:groupInfoQuery" />
+  </wsdl:message>
+  <wsdl:message name="setRadioUserRoamAttrResponse">
+    <wsdl:part name="parameters" element="tns:setRadioUserRoamAttrResponse" />
+  </wsdl:message>
+  <wsdl:message name="roamUserQuery">
+    <wsdl:part name="parameters" element="tns:roamUserQuery" />
+  </wsdl:message>
+  <wsdl:message name="setRadioUserRoamAttr">
+    <wsdl:part name="parameters" element="tns:setRadioUserRoamAttr" />
+  </wsdl:message>
+  <wsdl:message name="setRadioUserRoamToTscListResponse">
+    <wsdl:part name="parameters" element="tns:setRadioUserRoamToTscListResponse" />
+  </wsdl:message>
+  <wsdl:message name="userESNSync">
+    <wsdl:part name="parameters" element="tns:userESNSync" />
+  </wsdl:message>
+  <wsdl:message name="termUseInfoQueryResponse">
+    <wsdl:part name="parameters" element="tns:termUseInfoQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="userInfoQueryResponse">
+    <wsdl:part name="parameters" element="tns:userInfoQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="orgInfoQuery">
+    <wsdl:part name="parameters" element="tns:orgInfoQuery" />
+  </wsdl:message>
+  <wsdl:message name="termDevInfoQueryResponse">
+    <wsdl:part name="parameters" element="tns:termDevInfoQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="delRoamInRadioUserResponse">
+    <wsdl:part name="parameters" element="tns:delRoamInRadioUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="setRadioUserRoamToTscList">
+    <wsdl:part name="parameters" element="tns:setRadioUserRoamToTscList" />
+  </wsdl:message>
+  <wsdl:message name="groupInfoQueryResponse">
+    <wsdl:part name="parameters" element="tns:groupInfoQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="setRadioUserRoamToList">
+    <wsdl:part name="parameters" element="tns:setRadioUserRoamToList" />
+  </wsdl:message>
+  <wsdl:message name="roamUserQueryResponse">
+    <wsdl:part name="parameters" element="tns:roamUserQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="termUseInfoQuery">
+    <wsdl:part name="parameters" element="tns:termUseInfoQuery" />
+  </wsdl:message>
+  <wsdl:message name="isAliveResponse">
+    <wsdl:part name="parameters" element="tns:isAliveResponse" />
+  </wsdl:message>
+  <wsdl:message name="termDevInfoQuery">
+    <wsdl:part name="parameters" element="tns:termDevInfoQuery" />
+  </wsdl:message>
+  <wsdl:message name="roamToQueryResponse">
+    <wsdl:part name="parameters" element="tns:roamToQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="setRadioUserRoamToListResponse">
+    <wsdl:part name="parameters" element="tns:setRadioUserRoamToListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CityUserInterface">
+    <wsdl:operation name="userESNSync">
+      <wsdl:input name="userESNSync" message="tns:userESNSync" />
+      <wsdl:output name="userESNSyncResponse" message="tns:userESNSyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setRadioUserRoamAttr">
+      <wsdl:input name="setRadioUserRoamAttr" message="tns:setRadioUserRoamAttr" />
+      <wsdl:output name="setRadioUserRoamAttrResponse" message="tns:setRadioUserRoamAttrResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="orgInfoQuery">
+      <wsdl:input name="orgInfoQuery" message="tns:orgInfoQuery" />
+      <wsdl:output name="orgInfoQueryResponse" message="tns:orgInfoQueryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="userInfoQuery">
+      <wsdl:input name="userInfoQuery" message="tns:userInfoQuery" />
+      <wsdl:output name="userInfoQueryResponse" message="tns:userInfoQueryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="termUseInfoQuery">
+      <wsdl:input name="termUseInfoQuery" message="tns:termUseInfoQuery" />
+      <wsdl:output name="termUseInfoQueryResponse" message="tns:termUseInfoQueryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="switchStateQuery">
+      <wsdl:input name="switchStateQuery" message="tns:switchStateQuery" />
+      <wsdl:output name="switchStateQueryResponse" message="tns:switchStateQueryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setRadioUserRoamToList">
+      <wsdl:input name="setRadioUserRoamToList" message="tns:setRadioUserRoamToList" />
+      <wsdl:output name="setRadioUserRoamToListResponse" message="tns:setRadioUserRoamToListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delRoamInTalkGroup">
+      <wsdl:input name="delRoamInTalkGroup" message="tns:delRoamInTalkGroup" />
+      <wsdl:output name="delRoamInTalkGroupResponse" message="tns:delRoamInTalkGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setRadioUserRoamToTscList">
+      <wsdl:input name="setRadioUserRoamToTscList" message="tns:setRadioUserRoamToTscList" />
+      <wsdl:output name="setRadioUserRoamToTscListResponse" message="tns:setRadioUserRoamToTscListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="groupInfoQuery">
+      <wsdl:input name="groupInfoQuery" message="tns:groupInfoQuery" />
+      <wsdl:output name="groupInfoQueryResponse" message="tns:groupInfoQueryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="termDevInfoQuery">
+      <wsdl:input name="termDevInfoQuery" message="tns:termDevInfoQuery" />
+      <wsdl:output name="termDevInfoQueryResponse" message="tns:termDevInfoQueryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+      <wsdl:input name="isAlive" message="tns:isAlive" />
+      <wsdl:output name="isAliveResponse" message="tns:isAliveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delRoamInRadioUser">
+      <wsdl:input name="delRoamInRadioUser" message="tns:delRoamInRadioUser" />
+      <wsdl:output name="delRoamInRadioUserResponse" message="tns:delRoamInRadioUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="roamUserQuery">
+      <wsdl:input name="roamUserQuery" message="tns:roamUserQuery" />
+      <wsdl:output name="roamUserQueryResponse" message="tns:roamUserQueryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="roamToQuery">
+      <wsdl:input name="roamToQuery" message="tns:roamToQuery" />
+      <wsdl:output name="roamToQueryResponse" message="tns:roamToQueryResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CityUserServiceSoapBinding" type="tns:CityUserInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="orgInfoQuery">
+      <soap:operation soapAction="orgInfoQuery" style="document" />
+      <wsdl:input name="orgInfoQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="orgInfoQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setRadioUserRoamAttr">
+      <soap:operation soapAction="setRadioUserRoamAttr" style="document" />
+      <wsdl:input name="setRadioUserRoamAttr">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setRadioUserRoamAttrResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userESNSync">
+      <soap:operation soapAction="userESNSync" style="document" />
+      <wsdl:input name="userESNSync">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="userESNSyncResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userInfoQuery">
+      <soap:operation soapAction="userInfoQuery" style="document" />
+      <wsdl:input name="userInfoQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="userInfoQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="switchStateQuery">
+      <soap:operation soapAction="switchStateQuery" style="document" />
+      <wsdl:input name="switchStateQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="switchStateQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="termUseInfoQuery">
+      <soap:operation soapAction="termUseInfoQuery" style="document" />
+      <wsdl:input name="termUseInfoQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="termUseInfoQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setRadioUserRoamToList">
+      <soap:operation soapAction="setRadioUserRoamToList" style="document" />
+      <wsdl:input name="setRadioUserRoamToList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setRadioUserRoamToListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setRadioUserRoamToTscList">
+      <soap:operation soapAction="setRadioUserRoamToTscList" style="document" />
+      <wsdl:input name="setRadioUserRoamToTscList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setRadioUserRoamToTscListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delRoamInTalkGroup">
+      <soap:operation soapAction="delRoamInTalkGroup" style="document" />
+      <wsdl:input name="delRoamInTalkGroup">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="delRoamInTalkGroupResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="groupInfoQuery">
+      <soap:operation soapAction="groupInfoQuery" style="document" />
+      <wsdl:input name="groupInfoQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="groupInfoQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+      <soap:operation soapAction="isAlive" style="document" />
+      <wsdl:input name="isAlive">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="isAliveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="termDevInfoQuery">
+      <soap:operation soapAction="termDevInfoQuery" style="document" />
+      <wsdl:input name="termDevInfoQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="termDevInfoQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delRoamInRadioUser">
+      <soap:operation soapAction="delRoamInRadioUser" style="document" />
+      <wsdl:input name="delRoamInRadioUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="delRoamInRadioUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="roamUserQuery">
+      <soap:operation soapAction="roamUserQuery" style="document" />
+      <wsdl:input name="roamUserQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="roamUserQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="roamToQuery">
+      <soap:operation soapAction="roamToQuery" style="document" />
+      <wsdl:input name="roamToQuery">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="roamToQueryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CityUserService">
+    <wsdl:port name="CityUserServicePort" binding="tns:CityUserServiceSoapBinding">
+      <soap:address location="http://DESKTOP-8QQ39J5:8080/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

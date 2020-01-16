@@ -1,8 +1,0 @@
-2018-10-22 23:16:38,205 [7] INFO  VIMS.Web.Controllers.DoController - Post file : 
-2018-10-22 23:17:04,052 [6] INFO  VIMS.Web.Controllers.DoController - Post file : 
-2018-10-22 23:18:34,977 [7] INFO  VIMS.Web.Controllers.DoController - Post file : 
-2018-10-22 23:19:40,671 [6] INFO  VIMS.Web.Controllers.DoController - Post file : 
-2018-10-22 23:20:37,286 [6] INFO  VIMS.Web.Controllers.DoController - Post file : 
-2018-10-22 23:21:37,779 [6] INFO  VIMS.Web.Controllers.DoController - Post file : 
-2018-10-22 23:23:47,091 [6] INFO  VIMS.Web.Controllers.DoController - Post file : 
-2018-10-22 23:23:59,191 [39] INFO  VIMS.Web.Controllers.DoController - Post file Return : {"Exception":"","IsSuccess":true,"Message":"上传成功","ResultCode":"1","Entity":{"isDel":false,"recSN":[131,186,166,92,50,56,214,136],"attRsCode":null,"fCode":"BvFNeAiVAoID72","fName":"201810222161319.mp3","fSize":3632,"fAbstract":null,"fFirstFrame":null,"fStartTime":null,"fEndTime":null,"ID":"edd23e17-c98e-4da9-be3b-30d33896a20f","fRelativePath":"/UploadFiles/20181022/201810222161319.mp3","virtualId":"","fduration":null}}

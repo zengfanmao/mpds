@@ -1,9 +1,0 @@
-del Release\*.pdb
-del Release\*.exp
-del Release\*.lib
-del Release\*.iobj
-del Release\*.ipdb
-del Release\mod\*.pdb
-del Release\mod\*.exp
-del Release\mod\*.lib
-del Release\log\*.log

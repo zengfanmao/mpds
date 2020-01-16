@@ -1,8 +1,0 @@
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\bin\Release\GRGcms.Common.dll
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\bin\Release\GRGcms.Common.pdb
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\bin\Release\log4net.dll
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\bin\Release\log4net.pdb
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\bin\Release\log4net.xml
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\obj\Release\GRGcms.Common.dll
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\obj\Release\GRGcms.Common.pdb
-J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.Cms\GRGcms.Common\obj\Release\GRGcms.Common.csprojResolveAssemblyReference.cache

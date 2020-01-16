@@ -1,9 +1,0 @@
-<configuration name="pdt_server.conf" description="pdt_server">
-  <settings>
-    <param name="nat-map" value="false"/>
-    <param name="listen-ip" value="127.0.0.1"/>
-    <param name="listen-port" value="5564"/>
-    <param name="password" value="ClueCon"/>
-    <!--<param name="apply-inbound-acl" value="lan"/>-->
-  </settings>
-</configuration>

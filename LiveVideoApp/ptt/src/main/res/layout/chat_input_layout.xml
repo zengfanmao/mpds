@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/li_chat_input_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/window_background"
+    android:orientation="vertical">
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5px"
+        android:background="#e6bebebe" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dip"
+        android:background="@color/window_background">
+
+        <Button
+            android:id="@+id/btn_voice"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dip"
+            android:layout_marginRight="16dip"
+            android:background="@drawable/chat_voice_btn"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dip"
+            android:layout_marginRight="16dip"
+            android:background="@drawable/chat_edit_btn"
+            android:visibility="invisible" />
+
+        <com.aimissu.ptt.view.widget.audio.AudioRecorderButton
+            android:id="@+id/btn_press_to_speak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:layout_toLeftOf="@id/btn_send"
+            android:layout_toRightOf="@id/btn_voice"
+            android:textColor="@color/c_303030"
+            android:text="@string/str_recorder_normal"
+            android:background="@drawable/chat_press_speak_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:visibility="gone">
+        </com.aimissu.ptt.view.widget.audio.AudioRecorderButton>
+
+        <EditText
+            android:id="@+id/et_msg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dip"
+            android:layout_marginTop="8dip"
+            android:layout_toLeftOf="@id/btn_send"
+            android:layout_toRightOf="@id/btn_voice"
+            android:background="@drawable/et_bg"
+            android:gravity="center|left"
+            android:maxLines="3"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_more"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dip"
+            android:layout_marginRight="16dip"
+            android:background="@drawable/type_select_btn" />
+
+        <Button
+            android:lines="1"
+            android:id="@+id/btn_send"
+            android:layout_width="46dip"
+            android:layout_height="32dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/chat_send_btn_selector"
+            android:text="@string/button_send"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5px"
+        android:background="#e6bebebe" />
+
+    <include layout="@layout/chat_more_container" />
+</LinearLayout>
+
+

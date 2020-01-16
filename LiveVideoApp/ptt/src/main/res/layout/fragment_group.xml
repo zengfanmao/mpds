@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/fragment_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_item_height"
+        android:layout_gravity="top"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tab_left"
+            android:background="@color/tab_bg_bottom_selector"
+            android:gravity="center"
+            android:text="常用组"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tab_right"
+            android:background="@color/tab_bg_bottom"
+            android:gravity="center"
+            android:text="组群列表"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/group_search_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_item_height"
+        android:background="@color/tab_bg_bottom"
+        android:layout_marginTop="46dip"
+        android:visibility="visible">
+
+
+        <EditText
+            android:id="@+id/et_group_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="8dip"
+            android:layout_marginRight="5dip"
+            android:layout_toLeftOf="@id/icon_group_search_cancel"
+            android:background="@drawable/et_input_bg"
+            android:gravity="center|left"
+            android:hint="请输入用户组名/号码"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp" />
+
+
+        <LinearLayout
+            android:id="@+id/icon_group_search"
+            style="@style/ivItemBg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/icon_group_search_cancel"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/locaion_search_icon"
+               />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/icon_group_search_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text="取消"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/search_progressbar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/progress_style"
+        android:visibility="gone"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartrefreshlaout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="92dip"
+        android:layout_marginBottom="85dip">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="150dip"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/rl_speak_icon"
+            android:layout_width="113dip"
+            android:layout_height="92dip"
+            android:layout_centerInParent="true"
+            android:background="@drawable/mic_vloune_background"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_speaking"
+                android:layout_width="50dip"
+                android:layout_height="70dip"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dip"
+                android:background="@mipmap/group_item_spkeaing"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/volume_animlist" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_speakingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_btn_selector"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_speaker"
+        android:layout_width="110dip"
+        android:layout_height="110dip"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="5dip"
+        android:background="@drawable/presse_call_bg"
+        android:gravity="center"
+        android:text="按住讲话"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/group_call_press"
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dip"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:background="@color/black">
+
+        <com.aimissu.ptt.view.DrawableCenterButton
+            android:id="@+id/btn_call"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/call_bg_selector"
+            android:gravity="center"
+            android:text="   呼叫"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:visibility="visible"
+            android:drawableLeft="@mipmap/u473"/>
+
+
+        <com.aimissu.ptt.view.DrawableCenterButton
+            android:id="@+id/btn_speaker1"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/presse_call_bg_ju"
+            android:gravity="center"
+            android:text="按住讲话  "
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:visibility="visible"
+            android:drawableRight="@mipmap/group_item_spkeaing"/>
+    </LinearLayout>
+
+</FrameLayout>

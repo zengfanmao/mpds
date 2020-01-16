@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="54dip"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/item_blue_selector"
+    android:id="@+id/rl_personal_item"
+    android:clickable="true">
+
+
+    <!--<TextView-->
+        <!--android:gravity="center"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:id="@+id/tv_type"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--/>-->
+    <TextView
+        android:id="@+id/tv_type"
+        android:textStyle="bold"
+        android:textColor="#2AA748"
+        android:layout_marginTop="3dip"
+        android:layout_marginLeft="3dip"
+        android:gravity="center"
+        android:background="@drawable/touxiang_bg"
+        android:text="APP"
+        android:textSize="12sp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="25dp"
+        android:layout_height="35dp" />
+    <LinearLayout
+        android:id="@+id/li_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="90dip"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingTop="5dip">
+
+            <LinearLayout
+                android:id="@+id/ll_dizzy"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_dizzy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/pop_location_user_screen_item_action_white"
+                    android:paddingBottom="1dip"
+                    android:paddingLeft="@dimen/common_qunxian"
+                    android:paddingRight="@dimen/common_qunxian"
+                    android:paddingTop="1dip"
+                    android:text="遥晕"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_die"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_die"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/pop_location_user_screen_item_action_red"
+                    android:paddingBottom="1dip"
+                    android:paddingLeft="@dimen/common_qunxian"
+                    android:paddingRight="@dimen/common_qunxian"
+                    android:paddingTop="1dip"
+                    android:text="遥毙"
+                    android:textColor="#f00" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:id="@+id/li_location"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/item_bg_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/common_qunxian"
+            android:paddingRight="@dimen/common_qunxian">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:src="@mipmap/tab_location" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/li_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/item_bg_selector"
+            android:clickable="true"
+           >
+
+            <com.aimissu.ptt.view.widget.RedImageView
+                android:layout_marginRight="2dip"
+                android:layout_marginTop="2dip"
+                android:id="@+id/tab_icon"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="center"
+                app:r_percent="0.25"
+                app:shape="square" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_toLeftOf="@id/li_right"
+        android:layout_toRightOf="@id/iv_type_icon"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="李小龙"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="(在线)"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="测试组（000002）"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

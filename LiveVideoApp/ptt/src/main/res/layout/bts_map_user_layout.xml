@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/li_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_info_bubble"
+    android:orientation="vertical"
+    android:minWidth="280dip"
+    android:paddingLeft="@dimen/common_padding"
+    android:paddingTop="@dimen/common_padding"
+    android:paddingRight="@dimen/common_padding"
+    android:paddingBottom="25dip">
+
+    <RelativeLayout
+        android:id="@+id/bts_user_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_user_photo"
+            android:layout_width="39.0dip"
+            android:layout_height="39.0dip"
+            android:layout_marginLeft="11.0dip"
+            android:layout_marginTop="8.0dip"
+            android:layout_marginRight="7.0dip"
+            android:layout_marginBottom="9.0dip"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/msg_default"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_toRightOf="@+id/img_user_photo"
+            android:layout_toLeftOf="@+id/li_user_action"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:minWidth="120dip"
+                android:id="@+id/txt_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8.0dip"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="李小龙李小龙李小龙"
+                android:textColor="#ff333333"
+                android:textSize="15.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_user_duty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_user_name"
+                android:layout_marginTop="8.0dip"
+                android:maxLines="3"
+                android:text="李小龙李小龙李小龙李小龙"
+                android:textColor="#ff333333"
+                android:textSize="12.0sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:id="@+id/li_user_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/bts_user_change_layout"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/li_call"
+                android:layout_width="28dip"
+                android:layout_height="28dip"
+                android:src="@mipmap/u473" />
+
+            <RelativeLayout
+                android:id="@+id/li_chat"
+                android:layout_width="32dip"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/item_bg_selector"
+                android:clickable="true">
+
+                <ImageView
+                    android:id="@+id/iv_chat"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:src="@mipmap/group_item_msg" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/bts_user_change_layout"
+            android:layout_width="52.0dip"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+           >
+
+            <TextView
+                android:id="@+id/txt_tack_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/round_btn_blue_normal"
+                android:padding="2dip"
+                android:text="观看"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_tack_order"
+                android:layout_centerHorizontal="true"
+                android:text="超级保镖"
+                android:textColor="#ff333333"
+                android:textSize="11.0dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/bts_user_line"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginLeft="9.0dip"
+        android:layout_marginRight="9.0dip"
+        android:src="#ffe5e5e5" />
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/bts_user_unmanage_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="32.0dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="9.0dip"
+        android:paddingRight="9.0dip">
+
+        <TextView
+            android:id="@+id/txt_user_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="英武潇洒,武力超群,好男儿浑身是胆"
+            android:textColor="#ff333333"
+            android:textSize="12.0sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/ll_dizzy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_dizzy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pop_location_user_screen_item_action_red"
+                android:paddingLeft="@dimen/common_padding"
+                android:paddingTop="1dip"
+                android:paddingRight="@dimen/common_padding"
+                android:paddingBottom="1dip"
+                android:text="遥晕"
+                android:textColor="#f00" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:id="@+id/ll_die"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_die"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pop_location_user_screen_item_action_red"
+                android:paddingLeft="@dimen/common_padding"
+                android:paddingTop="1dip"
+                android:paddingRight="@dimen/common_padding"
+                android:paddingBottom="1dip"
+                android:text="遥毙"
+                android:textColor="#f00" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

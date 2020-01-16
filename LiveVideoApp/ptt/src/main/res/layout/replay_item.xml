@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/group_item_bg"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+
+    <RelativeLayout
+        android:layout_marginBottom="5dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:layout_toLeftOf="@id/tv_time"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:layout_toLeftOf="@id/li_right"
+                android:layout_toRightOf="@id/iv_type_icon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="刑侦科 李小龙"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginRight="@dimen/common_padding"
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="2018-07-07 00:01:12"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginLeft="@dimen/common_padding"
+        android:layout_gravity="left"
+        android:textColor="@color/white"
+        android:text="2018/10/10 09:09:09"
+        android:id="@+id/tv_recordTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_marginTop="3dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/li_action"
+            android:id="@+id/download_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_padding"
+            android:layout_marginRight="@dimen/common_padding"
+            />
+
+        <LinearLayout
+            android:layout_marginRight="@dimen/common_padding"
+            android:id="@+id/li_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:padding="8dip"
+                android:clickable="true"
+                android:id="@+id/iv_audioDetail"
+                android:layout_centerVertical="true"
+                android:layout_width="36dip"
+                android:layout_height="36dip"
+                android:src="@drawable/audio_detail" />
+
+            <ImageView
+            android:padding="8dip"
+            android:clickable="true"
+            android:id="@+id/iv_download"
+            android:layout_centerVertical="true"
+            android:layout_width="36dip"
+            android:layout_height="36dip"
+            android:src="@mipmap/replay_item_downlaod" />
+
+            <ImageView
+                android:padding="8dip"
+                android:clickable="true"
+                android:id="@+id/iv_play"
+                android:layout_centerVertical="true"
+                android:layout_width="36dip"
+                android:layout_height="36dip"
+                android:src="@drawable/play_audio_btn_selector" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

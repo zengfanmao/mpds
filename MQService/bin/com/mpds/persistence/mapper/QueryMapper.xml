@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 对应xml文件的路径 -->
+<mapper namespace="com.mpds.persistence.mapper.QueryMapper">
+  
+  
+  	<insert id="insertUserGps" parameterType="com.mpds.persistence.po.TbUserIMDatas">
+        INSERT INTO tbuserimdatas(uCode, type, longitude, latitude, LastModifyTime)
+        VALUES (#{uCode,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{lastModifyTime,jdbcType=TIMESTAMP})
+    </insert>
+    
+    <select id="selectUserGps" parameterType="com.mpds.persistence.po.TbUserIMDatas" resultType="java.lang.String">
+    	select uCode from tbuserimdatas where uCode = #{uCode,jdbcType=VARCHAR} limit 1
+    </select>
+    
+    <delete id="deleteExpireGps" parameterType="com.mpds.persistence.po.TbUserIMDatas">
+        DELETE FROM tbuserimdatas WHERE uCode = #{uCode,jdbcType=VARCHAR}
+    </delete>
+  	
+  	<update id="updateUserGps" parameterType="com.mpds.persistence.po.TbUserIMDatas">
+  		UPDATE tbuserimdatas
+  		SET longitude=#{longitude,jdbcType=DOUBLE}, 
+  			latitude=#{latitude,jdbcType=DOUBLE}, 
+  			LastModifyTime=#{lastModifyTime,jdbcType=TIMESTAMP}
+  		WHERE uCode = #{uCode,jdbcType=VARCHAR}
+  	</update>
+  	
+  	<update id="updatePdtUserStatus" parameterType="com.mpds.persistence.po.TbUserIMDatas">
+        UPDATE tbusers SET lycid = UNIX_TIMESTAMP()*1000, status = #{state,jdbcType=VARCHAR} WHERE uCode = #{uCode,jdbcType=VARCHAR} AND devicetype = 'PDT'
+    </update>
+    
+    <select id="selectGroupName" parameterType="com.mpds.persistence.po.TbUserIMDatas" resultType='java.lang.String'>
+    	select discussionName from tbdiscussiongroups  WHERE discussionCode = #{groupid,jdbcType=VARCHAR} and type = 'PDT'
+    </select>
+
+    <update id="updatePdtUserGroup" parameterType="com.mpds.persistence.po.TbUserIMDatas">
+        UPDATE tbusers SET lycid = UNIX_TIMESTAMP()*1000, groupid = #{groupid,jdbcType=VARCHAR}, groupName = #{groupName}
+        WHERE uCode = #{uCode,jdbcType=VARCHAR} AND devicetype = 'PDT'
+    </update>
+</mapper>

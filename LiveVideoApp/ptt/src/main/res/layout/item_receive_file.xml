@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/aurora_msgitem_receive_style">
+
+    <com.aimissu.ptt.view.widget.RoundTextView
+        android:id="@+id/aurora_tv_msgitem_date"
+        style="@style/aurora_msgitem_date_style" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/aurora_margin_other_side"
+        android:layout_marginTop="10dp">
+
+        <com.aimissu.ptt.view.widget.RoundImageView
+            android:id="@+id/aurora_iv_msgitem_avatar"
+            style="@style/aurora_msgitem_receiver_avatar_style"
+            android:contentDescription="@string/aurora_avatar_desc" />
+
+        <TextView
+            android:id="@+id/aurora_tv_msgitem_receiver_display_name"
+            style="@style/aurora_msgitem_receiver_display_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/aurora_iv_msgitem_avatar" />
+
+        <RelativeLayout
+            android:id="@+id/aurora_fl_msgitem_file_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aurora_tv_msgitem_receiver_display_name"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/aurora_iv_msgitem_avatar"
+            android:background="@drawable/aeg">
+            <com.daimajia.numberprogressbar.NumberProgressBar
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:layout_marginRight="@dimen/common_padding"
+                android:id="@+id/download_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/aurora_tv_file_filename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:layout_marginRight="@dimen/common_padding"
+                android:layout_marginTop="@dimen/common_padding"
+                android:layout_marginBottom="@dimen/common_padding"
+                android:maxWidth="200dip"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="正在上传文件..."
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/c_303030"
+                android:textSize="12sp" />
+
+
+
+        </RelativeLayout>
+
+
+        <ImageButton
+            android:id="@+id/aurora_ib_msgitem_resend"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/aurora_fl_msgitem_file_container"
+            android:background="@mipmap/aurora_send_msg_error"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>

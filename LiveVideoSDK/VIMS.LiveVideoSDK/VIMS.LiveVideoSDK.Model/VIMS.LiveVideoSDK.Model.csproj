@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9F75E2B0-8DD4-42F5-832C-1C02A66F678F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VIMS.LiveVideoSDK.Model</RootNamespace>
+    <AssemblyName>VIMS.LiveVideoSDK.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiParams.cs" />
+    <Compile Include="AudioDetailModel.cs" />
+    <Compile Include="ConferenceModel.cs" />
+    <Compile Include="DeptModel.cs" />
+    <Compile Include="FileModel.cs" />
+    <Compile Include="RecordingModel.cs" />
+    <Compile Include="AudioModel.cs" />
+    <Compile Include="BaseFile.cs" />
+    <Compile Include="CaseModel.cs" />
+    <Compile Include="CollectionModel.cs" />
+    <Compile Include="ChatModel.cs" />
+    <Compile Include="DeployModel.cs" />
+    <Compile Include="DeviceModel.cs" />
+    <Compile Include="DiscussionGroupModel.cs" />
+    <Compile Include="GpsModel.cs" />
+    <Compile Include="HistoryModel.cs" />
+    <Compile Include="ImageModel.cs" />
+    <Compile Include="IncomingStream.cs" />
+    <Compile Include="LivingModel.cs" />
+    <Compile Include="MapModel.cs" />
+    <Compile Include="MissionModel.cs" />
+    <Compile Include="MsgList.cs" />
+    <Compile Include="MsgModel.cs" />
+    <Compile Include="NoticeModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultEx.cs" />
+    <Compile Include="RoleValueModel.cs" />
+    <Compile Include="ServerConfigModel.cs" />
+    <Compile Include="TextModel.cs" />
+    <Compile Include="RankGroupModel.cs" />
+    <Compile Include="UserGroupModel.cs" />
+    <Compile Include="UserModel.cs" />
+    <Compile Include="VideoModel.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

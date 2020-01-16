@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "com.android.support:recyclerview-v7:27.1.1"
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    /**
+     * RxJava2 Retrofit 需要的依赖库
+     */
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'io.reactivex.rxjava2:rxjava:2.1.1'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    api('com.squareup.retrofit2:adapter-rxjava2:2.3.0') {
+        /**
+         *  为本依赖关闭依赖传递特性
+         */
+        transitive = true
+        //编译期排除 依据组织名称排除 防止不同版本的冲突
+        exclude group: 'com.squareup.okhttp3'
+        exclude group: 'com.squareup.okio'
+        // exclude group: 'io.reactivex', module: 'rxjava'
+    }
+}

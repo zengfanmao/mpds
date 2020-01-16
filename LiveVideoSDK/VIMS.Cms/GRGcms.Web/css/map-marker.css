@@ -1,0 +1,112 @@
+body, html, form{width: 100%; height: 100%; overflow: hidden; margin:0; font-family:"微软雅黑";}
+#allmap{width: 100%; height: 92%; overflow: hidden; margin:0; font-family:"微软雅黑";}
+.instance-search{ display:block; position:absolute; top:60px; left:20px; }
+	.instance-search .keyword{ position:relative; display:block; float:left; margin:0; padding:0 20px; width:300px; height:35px; line-height:32px; font-size:12px; border:1px solid #eee; color:#444; }
+    .instance-search .btn-search{ margin:0 0 0 -1px; position:absolute; display:block; right: 5px; top:5px; cursor: pointer;}
+.map-result{display: block; position: absolute; top:100px; left:20px; height: 60%; width: 300px;}
+.search-result{display: block; position: absolute; height: 100%; width: 300px; background-color: white; overflow-y: auto; padding-top: 6px;}
+    .search-result .result-close{position:fixed; margin: 0px; margin-top: -5px; padding-bottom: 5px; left: 290px;}
+    .search-result .result-close .icon{cursor: pointer; color: lightgray; text-align: right; padding-right: 0px;}.search-result .result-item{margin: 5px; cursor: pointer; padding-bottom: 5px;}
+    .search-result .result-item:hover{background-color: #f8f8f8;}
+    .search-result .result-item .icon{text-align: center; font-size: 25px; padding-top: 5px; color: red;}
+    .search-result .result-item .result .value{margin-bottom: 8px;}
+    .search-result .result-item .result .value .title{display:block; font-size: 14px; margin-bottom: 5px;}
+    .search-result .result-item .result .value .subtitle{display:block; font-size: 12px;}
+    .search-result .result-item .result .operate button{height: 20px; width: 50px; background-color: white; color: black;}
+    .search-result .result-item .result .operate .btn-danger{float: right;}
+    .search-result .result-item .result .operate .btn-primary{float:left;}
+    .search-result .pagination{float: right; margin-right: 10px;}
+    .search-result .no-data{text-align: center; margin-top: 30px;}
+    .search-result .no-data span{display: block;}
+.custom-scroll::-webkit-scrollbar{width: 5px; height: 5px;}
+/*正常情况下滑块的样式*/
+.custom-scroll::-webkit-scrollbar-thumb {background-color: rgba(0,0,0,.05); border-radius: 3px; -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);}
+/*鼠标悬浮在该类指向的控件上时滑块的样式*/
+.custom-scroll:hover::-webkit-scrollbar-thumb {background-color: rgba(0,0,0,.2); border-radius: 3px; -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);}
+/*鼠标悬浮在滑块上时滑块的样式*/
+.custom-scroll::-webkit-scrollbar-thumb:hover {background-color: rgba(0,0,0,.4); -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);}
+/*正常时候的主干部分*/
+.custom-scroll::-webkit-scrollbar-track {border-radius: 3px;-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); background-color: white;}
+/*鼠标悬浮在滚动条上的主干部分*/
+.custom-scroll::-webkit-scrollbar-track:hover {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.4); background-color: rgba(0,0,0,.01);}
+
+.marker-1
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -0px -139px;
+}
+.marker-2
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -18px -139px;
+}
+.marker-3
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -36px -139px;
+}
+.marker-4
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -54px -139px;
+}
+.marker-5
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -72px -139px;
+}
+.marker-6
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -90px -139px;
+}
+.marker-7
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -108px -139px;
+}
+.marker-8
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -126px -139px;
+}
+.marker-9
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -144px -139px;
+}
+.marker-10
+{
+	background-image: url(../images/markers_map.png);
+	width: 18px;
+	height: 27px;
+	display: inline-block;
+	background-position: -162px -139px;
+}

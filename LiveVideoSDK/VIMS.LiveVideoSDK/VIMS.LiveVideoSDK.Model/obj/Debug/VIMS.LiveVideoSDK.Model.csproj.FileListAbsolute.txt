@@ -1,0 +1,9 @@
+D:\Projects\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\bin\Debug\VIMS.LiveVideoSDK.Model.dll
+D:\Projects\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\bin\Debug\VIMS.LiveVideoSDK.Model.pdb
+D:\Projects\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\obj\Debug\VIMS.LiveVideoSDK.Model.dll
+D:\Projects\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\obj\Debug\VIMS.LiveVideoSDK.Model.pdb
+D:\Projects\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\obj\Debug\VIMS.LiveVideoSDK.Model.csprojResolveAssemblyReference.cache
+J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\bin\Debug\VIMS.LiveVideoSDK.Model.dll
+J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\bin\Debug\VIMS.LiveVideoSDK.Model.pdb
+J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\obj\Debug\VIMS.LiveVideoSDK.Model.dll
+J:\Project\Personal\语音对讲机\pmessage\02-Src\IM后台源码\LiveVideoSDKNew\LiveVideoSDK\VIMS.LiveVideoSDK\VIMS.LiveVideoSDK.Model\obj\Debug\VIMS.LiveVideoSDK.Model.pdb

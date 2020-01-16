@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2D2D2D</color>
+    <color name="colorPrimaryDark">#313131</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="transplant">#00000000</color>
+
+    <color name="common_focus">#055757</color>
+    <!--<color name="common_focus_press">#FF043535</color>-->
+    <color name="common_focus_press">#c8055757</color>
+    <color name="login_input_select">#D5DCE5</color>
+
+    <color name="white">#ffffff</color>
+    <color name="common_line">#E3E3E3</color>
+    <color name="common_bg">#F5F6F7</color>
+
+    <color name="c_20000000">#20000000</color>
+
+    <color name="group_item_bg">#60585858</color>
+    <color name="speak_btn_default">#006666</color>
+    <color name="speak_btn_default_t">#88006666</color>
+    <color name="c_f0eff5">#f0eff5</color>
+    <color name="c_d7f0eff5">#d7f0eff5</color>
+    <color name="window_background">@color/c_f0eff5</color>
+    <color name="white_border">#c9c7c7</color>
+    <color name="c_303030">#303030</color>
+    <color name="c_acacac">#ACACAC</color>
+
+
+    <!-->Conversation<-->
+    <color name="aurora_conv_divider">#ebebeb</color>
+
+    <!-->Message List<-->
+    <color name="aurora_msg_date_text_color">#ffffff</color>
+    <color name="aurora_msg_date_bg_color">#cecece</color>
+    <color name="aurora_msg_event_text_color">#ffffff</color>
+    <color name="aurora_display_name_text_color">#545454</color>
+    <color name="aurora_msg_receive_bubble_default_color">#2977fa</color>
+    <color name="aurora_msg_receive_bubble_pressed_color">#005af2</color>
+    <color name="aurora_msg_receive_bubble_selected_color">#0e63f0</color>
+    <color name="aurora_msg_receive_text_color">@color/white</color>
+    <color name="aurora_msg_send_bubble_default_color">#e7ebef</color>
+    <color name="aurora_msg_send_bubble_pressed_color">#c9d3dd</color>
+    <color name="aurora_msg_send_bubble_selected_color">#d3d9df</color>
+    <color name="aurora_msg_send_text_color">#7587a8</color>
+    <color name="aurora_event_msg_bg_color">#cecece</color>
+    <color name="aurora_video_message_duration_text_color">#545454</color>
+
+    <color name="greeny">#ff11aca6</color>
+    <color name="locaton_personal_online">#02FF02</color>
+
+    <color name="lfile_colorAccent">#055757</color>
+    <color name="lfile_colorPrimary">#055757</color>
+    <color name="lfile_colorPrimaryDark">#313131</color>
+    <color name="lfile_defaultColor">#055757</color>
+    <color name="bg_color_03">#364656</color>
+
+    <color name="tab_bg_bottom_selector">#055757</color>
+    <color name="tab_bg_bottom">#60585858</color>
+
+
+</resources>

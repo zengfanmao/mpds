@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="GRGcms.Web" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="userGps" type="GRGcms.Model.user_gps" />
+    <typeAlias alias="groupPdt" type="GRGcms.Model.pdt_group" />
+    <typeAlias alias="deptPdt" type="GRGcms.Model.pdt_dept" />
+    <typeAlias alias="userPdt" type="GRGcms.Model.pdt_user" />
+    <typeAlias alias="mpdsLog" type="GRGcms.Model.log"/>
+  </alias>
+  
+  <statements>
+    <select id="find_map_user" parameterClass="userGps" resultMap="map_user_result" >
+      <![CDATA[
+      SELECT a.id, a.uCode as account, a.longitude, a.latitude, b.uName as name, b.dName as dept, b.groupid, b.groupName, b.devicetype, b.status
+      FROM tbuserimdatas a inner join tbusers b on a.uCode = b.uCode
+      WHERE (a.uCode like CONCAT('%',#name#,'%') or b.uName like CONCAT('%',#name#,'%')
+            or b.dName like CONCAT('%',#name#,'%') or b.groupName like CONCAT('%',#name#,'%'))
+            and b.isDel = 0 and b.status <> "禁用"
+      LIMIT #page#, #pageSize#
+      ]]>
+    </select>
+    <select id="find_map_user_count" parameterClass="userGps" resultClass="System.Int32">
+      <![CDATA[
+      SELECT count(*)
+      FROM tbuserimdatas a inner join tbusers b on a.uCode = b.uCode
+      WHERE (a.uCode like CONCAT('%',#name#,'%') or b.uName like CONCAT('%',#name#,'%')
+      or b.dName like CONCAT('%',#name#,'%') or b.groupName like CONCAT('%',#name#,'%'))
+      and b.isDel = 0 and b.status <> "禁用"
+      ]]>
+    </select>
+
+    <insert id="insert_user_gps" parameterClass="userGps">
+      INSERT INTO tbuserimdatas(uCode, type, longitude, latitude, LastModifyTime)
+      VALUES (#account#, #type#, #longtitude#, #latitude#, #updatetime#)
+    </insert>
+
+    <update id="update_pdt_user_status" parameterClass="userGps">
+      UPDATE tbusers SET status = #status# WHERE uCode = #account# AND devicetype = 'PDT'
+    </update>
+
+    <update id="update_pdt_user_group" parameterClass="userGps">
+      UPDATE tbusers SET groupid = #groupid#, groupName = (select discussionName from tbdiscussiongroups where discussionCode = #groupid# and type = 'PDT') WHERE uCode = #account# AND devicetype = 'PDT'
+    </update>
+
+    <delete id="delete_expire_gps" parameterClass="userGps">
+      DELETE FROM tbuserimdatas WHERE uCode = #account#
+    </delete>
+
+    <delete id="delete_group_pdt" parameterClass="groupPdt">
+      DELETE FROM tbdiscussiongroups WHERE discussionCode = #groupId# and type = 'PDT'
+    </delete>
+
+    <insert id="insert_group_pdt" parameterClass="groupPdt">
+      INSERT INTO tbdiscussiongroups (discussionName,discussionCode,type,createdTime,updatetime,isDel)
+      VALUES (#groupName#,#groupId#,'PDT',now(),now(),0)
+    </insert>
+
+    <delete id="delete_dept_pdt" parameterClass="deptPdt">
+      DELETE FROM tbdepartments WHERE dCode = #unitCode#
+    </delete>
+
+    <insert id="insert_dept_pdt" parameterClass="deptPdt">
+      INSERT INTO tbdepartments (dCode, dName, dFather, farther, sort_id, createtime, updatetime)
+      VALUES (#unitCode#,#unitName#,#parentUnitCode#,#parentUnitName#,99,now(),now())
+    </insert>
+
+    <delete id="delete_user_pdt" parameterClass="userPdt">
+      DELETE FROM tbusers WHERE uCode = #msi#
+    </delete>
+
+    <insert id="insert_user_pdt" parameterClass="userPdt">
+      INSERT INTO tbusers (uCode,uName,pcNum,uDuty,accountType,uTel,dCode,dName,deviceid,deviceESN,devicetype,Createtime,lastLoginTime,status,uBelong,uUnitCode,roleid,roleType,isDel,uHeadPortrait)
+      VALUES (#msi#,#name#,#policeNum#,#post#,#policeType#,#phoneNum#,#unitCode#,#unitName#,#msi#,#ESN#,'PDT',now(),now(),'离线','',#unitCode#,0,1,0,#useDesc#)
+    </insert>
+
+    <select id="select_pdt_user_by_account" parameterClass="userGps" resultMap="map_pdt_result">
+      SELECT a.id, a.uCode as account, a.uName as name, a.dName as dept
+      FROM tbusers a
+      WHERE a.uCode =#account# and a.devicetype = 'PDT' and a.isDel = 0
+    </select>
+
+    <update id="update_app_user_status" parameterClass="userGps">
+      UPDATE tbusers SET status = #status# WHERE uCode = #account# AND devicetype = 'APP'
+    </update>
+
+    <insert id="insert_event_log" parameterClass="mpdsLog">
+      INSERT INTO mpds_log (account,name,eventName,remark,status,type,user_ip,createtime)
+      VALUES (#account#,#name#,#eventName#,#remark#,#status#,#type#,#user_ip#,now())
+    </insert>
+
+    <update id="update_user_portrait" parameterClass="userPdt">
+      UPDATE tbusers SET uHeadPortrait = #useDesc# WHERE uCode = #msi# AND devicetype = 'APP'
+    </update>
+
+    <select id="select_user_import_log" resultClass="mpdsLog">
+      SELECT account,name,eventName,remark,status,type,user_ip,createtime
+      FROM mpds_log
+      WHERE account = 'webservice' AND name = 'syncuser' AND eventName = 'syncuser'
+      ORDER BY createtime desc
+      LIMIT 1
+    </select>
+  </statements>
+  <!--
+  <parameterMaps>
+    <parameterMap id="get-employees-params">
+      <parameter property="Id" column="DepartmentId" />
+    </parameterMap>
+   
+  </parameterMaps>
+  -->
+  <resultMaps>
+    <resultMap id="map_user_result" class="GRGcms.Model.user_gps">
+      <result property="id" column="id"/>
+      <result property="account" column="account"/>
+      <result property="longtitude" column="longitude"/>
+      <result property="latitude" column="latitude"/>
+      <result property="name" column="name"/>
+      <result property="dept" column="dept"/>
+      <result property="groupid" column="groupid"/>
+      <result property="group" column="groupName"/>
+      <result property="devicetype" column="devicetype"/>
+      <result property="status" column="status"/>
+    </resultMap>
+    <resultMap id="map_pdt_result" class="GRGcms.Model.user_gps">
+      <result property="id" column="id"/>
+      <result property="account" column="account"/>
+      <result property="name" column="name"/>
+      <result property="dept" column="dept"/>
+    </resultMap>
+  </resultMaps>
+</sqlMap>

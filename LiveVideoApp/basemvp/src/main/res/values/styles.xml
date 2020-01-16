@@ -1,0 +1,37 @@
+<resources>
+    <string name="loading_msg_wait">请稍候…</string>
+
+    <color name="colorAccent">#049ce5</color>
+    <color name="c_b3b3b3">#b3b3b3</color>
+    <color name="confirm_top_bg">#055757</color>
+
+
+    <!-- 以下style目前在xqc主module的style重写的 -->
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
+
+    <style name="XqcTheme" parent="@style/AppTheme">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="XqcTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="XqcTheme.NoActionBar.Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="XqcToolbarTextAppearance" />
+
+    <style name="waitingDialogStyle" />
+
+    <style name="LiveActivityStyle">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+</resources>
